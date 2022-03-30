@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="jumbotron">
+  <h1>Here is a list of all available puppies.</h1>
+  <ul>
+
+  {% for am in sor %}
+   <li> {{am.text}}</li>
+  {% endfor %} 
+
+    
+
+  </ul>
+</div>
+
+{% endblock %}
+
+@come.route('/creat', methods=['GET','POST'])
+@login_required
+def create_comment():
+
+    imm = Comment.query.all()
+
+    form = CommentForm()
+
+    if form.validate_on_submit():
+
+        come = Comment(text=form.text.data,post_id=current_user.id)
+
+        db.session.add(come)
+        db.session.commit()
+        flash('comment created!')
+        return redirect(url_for('come.create_comment'))
+
+    return render_template("comment.html",form=form,imm=imm)
