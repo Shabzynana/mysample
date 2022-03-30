@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form class="form-group" method="POST">
+   {{ form.hidden_tag() }}
+   <div class="form-group">
+   {{ form.text.label(class="form-control-label") }}
+   {{ form.text(class="form-control form-control-lg") }}
+   </div>
+   <div class="form-group">
+       {{ form.submit(class="btn btn-outline-info") }}
+   </div>
+</form>
+
+
+<div class="jumbotron">
+  <h1>Here is a list of all available puppies.</h1>
+  <ul>
+
+  {% for am in imm %}
+
+  <li>
+   <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + am.author.profile_image) }}">
+  </li>
+
+  {{am.text}}
+  <br>
+  <br>
+  {{am.author.username}}
+  <br>
+  <br>
+  <br>
+  <br>
+
+
+
+
+  {% endfor %}
+
+
+
+
+  </ul>
+</div>
+
+
+
+
+{% endblock %}
