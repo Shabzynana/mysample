@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+    <form action="/switchinfo" method="POST">
+        <div align="center" id="mainselection">
+          <select name="colour" method="GET" action="/">
+              {% for site in name %}
+                  <option value="{{site}}" SELECTED>{{site}}</option>"
+              {% endfor %}
+          </select>
+
+        </div>
+        <button class="button execute" name="submit" value="submit">Submit</button>
+    </form>
+
+
+  </body>
+</html>
